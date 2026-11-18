@@ -1,0 +1,42 @@
+{
+  "agent": { "ip": "172.16.0.5", "name": "win-target", "id": "001" },
+  "manager": { "name": "wazuh-mgr" },
+  "data": {
+    "win": {
+      "eventdata": {
+        "subjectUserName": "labadmin",
+        "subjectDomainName": "win-target",
+        "subjectUserSid": "S-1-5-21-<machine>-500",
+        "subjectLogonId": "0x19fa2e",
+        "targetUserName": "Administrators",
+        "targetDomainName": "Builtin",
+        "targetSid": "S-1-5-32-544",
+        "memberSid": "S-1-5-21-<machine>-1001"
+      },
+      "system": {
+        "eventID": "4732",
+        "channel": "Security",
+        "computer": "win-target",
+        "providerName": "Microsoft-Windows-Security-Auditing",
+        "message": "A member was added to a security-enabled local group. (Group: Administrators, Builtin)",
+        "systemTime": "2026-11-17T12:30:19.3908808Z",
+        "eventRecordID": "6721"
+      }
+    }
+  },
+  "rule": {
+    "level": 12,
+    "description": "Administrators Group Changed",
+    "groups": ["windows", "windows_security", "group_changed", "win_group_changed"],
+    "firedtimes": 1,
+    "mitre": {
+      "technique": ["Domain Policy Modification"],
+      "id": ["T1484"],
+      "tactic": ["Defense Evasion", "Privilege Escalation"]
+    },
+    "id": "60154"
+  },
+  "location": "EventChannel",
+  "decoder": { "name": "windows_eventchannel" },
+  "timestamp": "2026-11-17T12:30:20.470+0000"
+}

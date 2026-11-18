@@ -1,0 +1,35 @@
+{
+  "agent": { "ip": "172.16.0.5", "name": "win-target", "id": "001" },
+  "manager": { "name": "wazuh-mgr" },
+  "data": {
+    "win": {
+      "system": {
+        "eventID": "1102",
+        "channel": "Security",
+        "computer": "win-target",
+        "providerName": "Microsoft-Windows-Eventlog",
+        "message": "The audit log was cleared. Subject: Account Name labadmin, Domain Name win-target, Logon ID 0x19FA2E",
+        "systemTime": "2026-11-17T12:52:43.1425814Z",
+        "eventRecordID": "6769"
+      },
+      "logFileCleared": {
+        "subjectUserName": "labadmin",
+        "subjectDomainName": "win-target",
+        "subjectUserSid": "S-1-5-21-<machine>-500",
+        "subjectLogonId": "0x19fa2e",
+        "clientProcessId": "4572"
+      }
+    }
+  },
+  "rule": {
+    "level": 5,
+    "description": "The audit log was cleared",
+    "groups": ["windows", "windows_logs", "log_clearing_auditlog"],
+    "firedtimes": 1,
+    "mitre": { "technique": ["Indicator Removal"], "id": ["T1070"], "tactic": ["Defense Evasion"] },
+    "id": "63103"
+  },
+  "location": "EventChannel",
+  "decoder": { "name": "windows_eventchannel" },
+  "timestamp": "2026-11-17T12:52:43.149+0000"
+}

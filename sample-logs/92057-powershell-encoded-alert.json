@@ -1,0 +1,41 @@
+{
+  "agent": { "ip": "172.16.0.5", "name": "win-target", "id": "001" },
+  "manager": { "name": "wazuh-mgr" },
+  "data": {
+    "win": {
+      "eventdata": {
+        "image": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "commandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAiAGwAYQBiACAAdABlAHMAdAA6ACAAZQBuAGMAbwBkAGUAZAAgAGMAbwBtAG0AYQBuAGQAIgA7ACAAdwBoAG8AYQBtAGkAOwAgAGgAbwBzAHQAbgBhAG0AZQA=",
+        "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "parentCommandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"",
+        "user": "win-target\\\\labadmin",
+        "integrityLevel": "High",
+        "currentDirectory": "C:\\\\Sysmon\\\\",
+        "processId": "1048",
+        "parentProcessId": "3724",
+        "logonId": "0x19fa2e",
+        "utcTime": "2026-11-17 12:47:31.226",
+        "hashes": "SHA256=38F4384643B3FA0DE714D2367B712C2E0FA1C89E2CFD131AE6B831AD962B1033"
+      },
+      "system": {
+        "eventID": "1",
+        "channel": "Microsoft-Windows-Sysmon/Operational",
+        "computer": "win-target",
+        "providerName": "Microsoft-Windows-Sysmon",
+        "systemTime": "2026-11-17T12:47:31.2504304Z",
+        "eventRecordID": "908"
+      }
+    }
+  },
+  "rule": {
+    "level": 12,
+    "description": "Powershell.exe spawned a powershell process which executed a base64 encoded command",
+    "groups": ["sysmon", "sysmon_eid1_detections", "windows"],
+    "firedtimes": 1,
+    "mitre": { "technique": ["PowerShell"], "id": ["T1059.001"], "tactic": ["Execution"] },
+    "id": "92057"
+  },
+  "location": "EventChannel",
+  "decoder": { "name": "windows_eventchannel" },
+  "timestamp": "2026-11-17T12:47:32.243+0000"
+}

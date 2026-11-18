@@ -1,0 +1,34 @@
+{
+  "name": "Azure Wazuh SOC Lab - Techniques Covered",
+  "versions": {
+    "attack": "16",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques simulated and detected in the Azure Wazuh SOC Detection Lab (17 November 2026).",
+  "sorting": 0,
+  "layout": { "layout": "side", "showName": true, "showID": true },
+  "hideDisabled": false,
+  "techniques": [
+    { "techniqueID": "T1110.001", "tactic": "credential-access", "color": "#66b1ff", "comment": "Scenario 1: failed RDP logons, rules 60122 / 60204", "enabled": true },
+    { "techniqueID": "T1136.001", "tactic": "persistence", "color": "#66b1ff", "comment": "Scenario 2: new local account, rule 60109", "enabled": true },
+    { "techniqueID": "T1098", "tactic": "persistence", "color": "#66b1ff", "comment": "Scenario 2: added to Administrators, rule 60154", "enabled": true },
+    { "techniqueID": "T1053.005", "tactic": "persistence", "color": "#66b1ff", "comment": "Scenario 3: scheduled task, Event 4698 + Sysmon 1", "enabled": true },
+    { "techniqueID": "T1059.001", "tactic": "execution", "color": "#66b1ff", "comment": "Scenario 4: encoded PowerShell, Sysmon 1", "enabled": true },
+    { "techniqueID": "T1027", "tactic": "defense-evasion", "color": "#66b1ff", "comment": "Scenario 4: Base64-encoded command", "enabled": true },
+    { "techniqueID": "T1070.001", "tactic": "defense-evasion", "color": "#66b1ff", "comment": "Scenario 5: Security log cleared, Event 1102", "enabled": true },
+    { "techniqueID": "T1543.003", "tactic": "persistence", "color": "#31a354", "comment": "Scenario 6: service from user-writable path, custom rule 100100", "enabled": true }
+  ],
+  "gradient": {
+    "colors": ["#ffffff", "#66b1ff"],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    { "label": "Detected with stock Wazuh rules / telemetry", "color": "#66b1ff" },
+    { "label": "Detected with custom rule 100100", "color": "#31a354" }
+  ],
+  "showTacticRowBackground": false,
+  "selectTechniquesAcrossTactics": true
+}

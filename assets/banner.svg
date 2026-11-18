@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="260" viewBox="0 0 1000 260" role="img" aria-label="Azure Wazuh SOC Detection Lab">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1020"/>
+      <stop offset="1" stop-color="#15223f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#38bdf8" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2e4f" stroke-width="1"/>
+    </pattern>
+    <clipPath id="typed">
+      <rect x="40" y="168" width="0" height="34">
+        <animate attributeName="width" from="0" to="920" dur="3.2s" begin="0.6s" fill="freeze"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <rect width="1000" height="260" rx="14" fill="url(#bg)"/>
+  <rect width="1000" height="260" rx="14" fill="url(#grid)" opacity="0.55"/>
+
+  <!-- moving scan band -->
+  <rect x="-200" y="0" width="200" height="260" fill="url(#scan)">
+    <animate attributeName="x" from="-200" to="1000" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- shield icon -->
+  <g transform="translate(44,52)">
+    <path d="M30 0 L60 12 L60 40 C60 62 46 76 30 84 C14 76 0 62 0 40 L0 12 Z" fill="none" stroke="url(#accent)" stroke-width="3.5">
+      <animate attributeName="stroke-opacity" values="1;0.45;1" dur="2.6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M16 42 L26 52 L45 30" fill="none" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" stroke-dashoffset="60">
+      <animate attributeName="stroke-dashoffset" from="60" to="0" dur="1.2s" begin="0.4s" fill="freeze"/>
+    </path>
+  </g>
+
+  <!-- title -->
+  <text x="130" y="82" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#f1f5f9">Azure Wazuh SOC Detection Lab</text>
+  <text x="130" y="112" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" fill="#94a3b8">Cloud SIEM, Windows endpoint telemetry, six attack techniques, one custom rule</text>
+
+  <!-- typed line -->
+  <g clip-path="url(#typed)">
+    <text x="40" y="193" font-family="Consolas, 'Courier New', monospace" font-size="21" fill="#38bdf8">$ detect --technique T1110 T1136 T1053 T1059 T1070 T1543 --siem wazuh-4.14</text>
+  </g>
+  <rect x="40" y="176" width="11" height="22" fill="#38bdf8">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="x" from="40" to="960" dur="3.2s" begin="0.6s" fill="freeze"/>
+  </rect>
+
+  <!-- alert chips that cycle -->
+  <g font-family="Consolas, 'Courier New', monospace" font-size="14" font-weight="600">
+    <g>
+      <rect x="40" y="218" width="170" height="26" rx="13" fill="#7f1d1d" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="4s" repeatCount="indefinite"/>
+      </rect>
+      <text x="56" y="236" fill="#fecaca" opacity="0">rule 60204  L10
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="4s" repeatCount="indefinite"/>
+      </text>
+    </g>
+    <g>
+      <rect x="230" y="218" width="170" height="26" rx="13" fill="#7f1d1d" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="5s" repeatCount="indefinite"/>
+      </rect>
+      <text x="246" y="236" fill="#fecaca" opacity="0">rule 60154  L12
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="5s" repeatCount="indefinite"/>
+      </text>
+    </g>
+    <g>
+      <rect x="420" y="218" width="170" height="26" rx="13" fill="#7f1d1d" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="6s" repeatCount="indefinite"/>
+      </rect>
+      <text x="436" y="236" fill="#fecaca" opacity="0">rule 92057  L12
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="6s" repeatCount="indefinite"/>
+      </text>
+    </g>
+    <g>
+      <rect x="610" y="218" width="210" height="26" rx="13" fill="#064e3b" opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="7s" repeatCount="indefinite"/>
+      </rect>
+      <text x="626" y="236" fill="#a7f3d0" opacity="0">rule 100100  L12  (custom)
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="8s" begin="7s" repeatCount="indefinite"/>
+      </text>
+    </g>
+  </g>
+</svg>

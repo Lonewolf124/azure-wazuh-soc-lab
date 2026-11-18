@@ -1,0 +1,43 @@
+{
+  "agent": { "ip": "172.16.0.5", "name": "win-target", "id": "001" },
+  "manager": { "name": "wazuh-mgr" },
+  "data": {
+    "win": {
+      "eventdata": {
+        "targetUserName": "labadmin",
+        "targetDomainName": "MicrosoftAccount",
+        "targetUserSid": "S-1-0-0",
+        "subjectUserSid": "S-1-0-0",
+        "subjectLogonId": "0x0",
+        "logonType": "3",
+        "logonProcessName": "NtLmSsp",
+        "authenticationPackageName": "NTLM",
+        "status": "0xc000006d",
+        "subStatus": "0xc000006a",
+        "ipAddress": "REDACTED (my workstation public IP)",
+        "workstationName": "REDACTED"
+      },
+      "system": {
+        "eventID": "4625",
+        "channel": "Security",
+        "computer": "win-target",
+        "providerName": "Microsoft-Windows-Security-Auditing",
+        "severityValue": "AUDIT_FAILURE",
+        "systemTime": "2026-11-17T12:20:23.9968549Z",
+        "eventRecordID": "6558"
+      }
+    }
+  },
+  "rule": {
+    "level": 10,
+    "description": "Multiple Windows Logon Failures",
+    "groups": ["windows", "windows_security", "authentication_failures"],
+    "frequency": 8,
+    "firedtimes": 1,
+    "mitre": { "technique": ["Brute Force"], "id": ["T1110"], "tactic": ["Credential Access"] },
+    "id": "60204"
+  },
+  "location": "EventChannel",
+  "decoder": { "name": "windows_eventchannel" },
+  "timestamp": "2026-11-17T12:20:24.570+0000"
+}

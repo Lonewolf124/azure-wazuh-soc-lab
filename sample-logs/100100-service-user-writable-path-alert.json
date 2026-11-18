@@ -1,0 +1,49 @@
+{
+  "agent": {
+    "ip": "172.16.0.5",
+    "name": "win-target",
+    "id": "001"
+  },
+  "manager": {
+    "name": "wazuh-mgr"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "serviceType": "user mode service",
+        "accountName": "LocalSystem",
+        "imagePath": "C:\\\\Users\\\\Public\\\\updater.exe",
+        "startType": "demand start",
+        "serviceName": "LabBadSvc"
+      },
+      "system": {
+        "eventID": "7045",
+        "eventSourceName": "Service Control Manager",
+        "level": "4",
+        "channel": "System",
+        "message": "\"A service was installed in the system.\r\n\r\nService Name:  LabBadSvc\r\nService File Name:  C:\\Users\\Public\\updater.exe\r\nService Type:  user mode service\r\nService Start Type:  demand start\r\nService Account:  LocalSystem\"",
+        "systemTime": "2026-11-17T13:11:27.1325247Z",
+        "eventRecordID": "1026",
+        "computer": "win-target",
+        "providerName": "Service Control Manager"
+      }
+    }
+  },
+  "rule": {
+    "firedtimes": 1,
+    "level": 12,
+    "description": "Windows service installed from a user-writable path: C:\\\\Users\\\\Public\\\\updater.exe",
+    "groups": ["windows", "custom", "persistence"],
+    "mitre": {
+      "technique": ["Windows Service"],
+      "id": ["T1543.003"],
+      "tactic": ["Persistence", "Privilege Escalation"]
+    },
+    "id": "100100"
+  },
+  "location": "EventChannel",
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "timestamp": "2026-11-17T13:11:28.199+0000"
+}

@@ -1,0 +1,39 @@
+{
+  "agent": { "ip": "172.16.0.5", "name": "win-target", "id": "001" },
+  "manager": { "name": "wazuh-mgr" },
+  "data": {
+    "win": {
+      "eventdata": {
+        "serviceName": "LabGoodSvc",
+        "imagePath": "C:\\\\Windows\\\\System32\\\\notepad.exe",
+        "serviceType": "user mode service",
+        "startType": "demand start",
+        "accountName": "LocalSystem"
+      },
+      "system": {
+        "eventID": "7045",
+        "channel": "System",
+        "computer": "win-target",
+        "providerName": "Service Control Manager",
+        "message": "A service was installed in the system. Service Name: LabGoodSvc, Service File Name: C:\\Windows\\System32\\notepad.exe",
+        "systemTime": "2026-11-17T13:11:33.4606268Z",
+        "eventRecordID": "1027"
+      }
+    }
+  },
+  "rule": {
+    "level": 5,
+    "description": "New Windows Service Created",
+    "groups": ["windows", "windows_system"],
+    "firedtimes": 1,
+    "mitre": {
+      "technique": ["Windows Service"],
+      "id": ["T1543.003"],
+      "tactic": ["Persistence", "Privilege Escalation"]
+    },
+    "id": "61138"
+  },
+  "location": "EventChannel",
+  "decoder": { "name": "windows_eventchannel" },
+  "timestamp": "2026-11-17T13:11:34.531+0000"
+}

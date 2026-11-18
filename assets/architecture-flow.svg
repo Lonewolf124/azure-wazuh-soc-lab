@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440" role="img" aria-label="Animated data flow: Windows endpoint to Wazuh manager to analyst dashboard inside an Azure VNet">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1020"/>
+      <stop offset="1" stop-color="#121c36"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .box { fill: #0f1a33; stroke: #38bdf8; stroke-width: 2; }
+      .box2 { fill: #0f1a33; stroke: #34d399; stroke-width: 2; }
+      .box3 { fill: #0f1a33; stroke: #a78bfa; stroke-width: 2; }
+      .t1 { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #f1f5f9; }
+      .t2 { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .lbl { font-family: Consolas, 'Courier New', monospace; font-size: 12px; fill: #cbd5e1; }
+      .flow { stroke: #38bdf8; stroke-width: 2.5; fill: none; stroke-dasharray: 8 8; animation: dash 1.2s linear infinite; }
+      .flow2 { stroke: #a78bfa; stroke-width: 2.5; fill: none; stroke-dasharray: 8 8; animation: dash 1.6s linear infinite; }
+      @keyframes dash { to { stroke-dashoffset: -32; } }
+      .vnet { fill: none; stroke: #475569; stroke-width: 1.5; stroke-dasharray: 6 6; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="440" rx="14" fill="url(#bg)"/>
+
+  <!-- VNet boundary -->
+  <rect class="vnet" x="30" y="150" width="650" height="250" rx="14"/>
+  <text class="lbl" x="46" y="174">Azure VNet 172.16.0.0/24  |  India South Central  |  one resource group</text>
+
+  <!-- Attack simulation -->
+  <rect class="box3" x="50" y="30" width="270" height="86" rx="12"/>
+  <text class="t1" x="68" y="62">Test activity</text>
+  <text class="t2" x="68" y="84">on-host commands + failed RDP logons</text>
+  <text class="t2" x="68" y="102">from my allow-listed workstation</text>
+
+  <!-- win-target -->
+  <rect class="box" x="50" y="220" width="270" height="150" rx="12"/>
+  <text class="t1" x="68" y="254">win-target</text>
+  <text class="t2" x="68" y="276">Windows Server 2022   172.16.0.5</text>
+  <text class="t2" x="68" y="300">Sysmon 15.22  +  Wazuh agent 4.14.10</text>
+  <text class="t2" x="68" y="324">Security | System | Sysmon channels</text>
+  <text class="lbl" x="68" y="352">events: 4625 4720 4732 4698 1102 7045</text>
+
+  <!-- wazuh-mgr -->
+  <rect class="box2" x="400" y="220" width="260" height="150" rx="12"/>
+  <text class="t1" x="418" y="254">wazuh-mgr</text>
+  <text class="t2" x="418" y="276">Ubuntu 24.04   172.16.0.4</text>
+  <text class="t2" x="418" y="300">Manager | Indexer | Dashboard</text>
+  <text class="t2" x="418" y="324">stock rules + custom rule 100100</text>
+  <text class="lbl" x="418" y="352">decode -&gt; match -&gt; alert</text>
+
+  <!-- Analyst -->
+  <rect class="box3" x="740" y="220" width="220" height="150" rx="12"/>
+  <text class="t1" x="758" y="254">Analyst</text>
+  <text class="t2" x="758" y="276">HTTPS 443 from one IP</text>
+  <text class="t2" x="758" y="300">Threat Hunting / Discover</text>
+  <text class="t2" x="758" y="324">triage, incident reports,</text>
+  <text class="t2" x="758" y="344">playbooks</text>
+
+  <!-- flows -->
+  <path class="flow2" d="M 185 116 L 185 220" marker-end="url(#arrow)"/>
+  <text class="lbl" x="196" y="172">generates events</text>
+
+  <path class="flow" d="M 320 295 L 400 295" marker-end="url(#arrow)"/>
+  <text class="lbl" x="318" y="285">1514/TCP</text>
+
+  <path class="flow2" d="M 660 295 L 740 295" marker-end="url(#arrow)"/>
+  <text class="lbl" x="668" y="285">443</text>
+
+  <!-- travelling events -->
+  <circle r="5" fill="#38bdf8">
+    <animateMotion dur="2.4s" repeatCount="indefinite" path="M 320 295 L 400 295"/>
+  </circle>
+  <circle r="5" fill="#38bdf8">
+    <animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M 320 295 L 400 295"/>
+  </circle>
+  <circle r="5" fill="#a78bfa">
+    <animateMotion dur="2.4s" repeatCount="indefinite" path="M 660 295 L 740 295"/>
+  </circle>
+  <circle r="5" fill="#a78bfa">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M 185 116 L 185 220"/>
+  </circle>
+
+  <!-- alert chips above manager -->
+  <g font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="600">
+    <rect x="410" y="170" width="150" height="24" rx="12" fill="#7f1d1d" opacity="0">
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="6s" begin="0s" repeatCount="indefinite"/>
+    </rect>
+    <text x="424" y="187" fill="#fecaca" opacity="0">60204  brute force
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="6s" begin="0s" repeatCount="indefinite"/>
+    </text>
+    <rect x="410" y="170" width="150" height="24" rx="12" fill="#7f1d1d" opacity="0">
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="6s" begin="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="424" y="187" fill="#fecaca" opacity="0">92057  encoded PS
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="6s" begin="2s" repeatCount="indefinite"/>
+    </text>
+    <rect x="410" y="170" width="150" height="24" rx="12" fill="#064e3b" opacity="0">
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="6s" begin="4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="424" y="187" fill="#a7f3d0" opacity="0">100100  custom rule
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="6s" begin="4s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <text class="lbl" x="50" y="420">Public IPs exist for administration only and are restricted to one source address by the NSGs.</text>
+</svg>

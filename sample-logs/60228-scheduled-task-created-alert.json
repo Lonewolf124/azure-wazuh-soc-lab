@@ -1,0 +1,41 @@
+{
+  "agent": { "ip": "172.16.0.5", "name": "win-target", "id": "001" },
+  "manager": { "name": "wazuh-mgr" },
+  "data": {
+    "win": {
+      "eventdata": {
+        "taskName": "\\\\LabUpdateCheck",
+        "subjectUserName": "labadmin",
+        "subjectDomainName": "win-target",
+        "subjectUserSid": "S-1-5-21-<machine>-500",
+        "subjectLogonId": "0x19fa2e",
+        "clientProcessId": "5944",
+        "parentProcessId": "3724",
+        "taskContent": "(trimmed) Task XML: Author win-target\\labadmin; Trigger LogonTrigger; Exec Command C:\\Windows\\System32\\notepad.exe; Principal UserId S-1-5-18, RunLevel LeastPrivilege"
+      },
+      "system": {
+        "eventID": "4698",
+        "channel": "Security",
+        "computer": "win-target",
+        "providerName": "Microsoft-Windows-Security-Auditing",
+        "systemTime": "2026-11-17T12:40:11.7287933Z",
+        "eventRecordID": "6750"
+      }
+    }
+  },
+  "rule": {
+    "level": 4,
+    "description": "A scheduled task was created",
+    "groups": ["windows", "windows_security", "ipsec"],
+    "firedtimes": 2,
+    "mitre": {
+      "technique": ["Scheduled Task/Job"],
+      "id": ["T1053"],
+      "tactic": ["Execution", "Persistence", "Privilege Escalation"]
+    },
+    "id": "60228"
+  },
+  "location": "EventChannel",
+  "decoder": { "name": "windows_eventchannel" },
+  "timestamp": "2026-11-17T12:40:12.686+0000"
+}
