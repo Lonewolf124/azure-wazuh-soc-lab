@@ -293,7 +293,7 @@ Use your own subscription, restrict every management port to your own IP, and se
 
 ## Acknowledgements and licence
 
-The folder layout was adapted from the public project [harryklrr/soc-detection-lab](https://github.com/harryklrr/soc-detection-lab) (MIT). The infrastructure, configurations, scenarios, evidence and write-ups in this repository come from my own Azure deployment. The Sysmon configuration is the community [SwiftOnSecurity sysmon-config](https://github.com/SwiftOnSecurity/sysmon-config).
+The infrastructure, configurations, scenarios, evidence and write-ups in this repository come from my own Azure deployment. The Sysmon configuration is the community [SwiftOnSecurity sysmon-config](https://github.com/SwiftOnSecurity/sysmon-config).
 
 Released under the [MIT licence](LICENSE).
 
